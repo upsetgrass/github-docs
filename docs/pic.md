@@ -1,17 +1,22 @@
 # 插图
-有多种方式生成我们所需要的图，1、graphviz 2、drawio
-第一种方式是以代码的形式存储，第二种方式是以图形化、交互式的方式进行，.drawio->.svg
-简要针对第一种方式进行讲解
-Graphviz是一个底层图形可视软件，通过命令行和编程接口来生成图表，通过解析DOT语言，自动布局绘制图，而直接写DOT语言会比较困难，所以有人将DOT接口进行优化封装，即pydot，我们通过执行python脚本，自动生成.dot，又由Graphviz将.dot解析成.svg等图片格式
-所以我们只需要专注于pydot，pydot中有三个主要的类node、Subgraph、Graph
-1、node是pydot最基本的元素，表示一个独立的实体，其中不能包含其他的节点，需要加入到Graph/SubGraph中，否则不会显示在最终的图中
-2、Subgraph子图是一组节点的集合，其本身不是节点，可以包含多个 Node，并且可以用边连接节点
-3、Graph是整个图，是最终的可视化对象。是最高级的容器，可以包含：节点、子图、边，只有Graph、DiGraph对象可以被write_png()  write_svg()输出为最终图像
-那么在pydot中就是创建这些类，然后将node、Subgraph、Graph连接起来就构成了图，然后根据不同的需求，用不同的布局引擎来使用不同的图形排版，如下所示
-`dot -Tpng example.dot -o example_dot.png`
-`fdp -Tpng example.dot -o example_fdp.png`
-![](./images/4.png)
-从理解层面，排除掉边，就可以把Graph理解为根，Subgraph理解为非叶子节点，node就是叶子节点
+有多种方式生成我们所需要的图，1、graphviz 2、drawio  
+
+第一种方式是以代码的形式存储，第二种方式是以图形化、交互式的方式进行，.drawio->.svg  
+
+简要针对第一种方式进行讲解  
+Graphviz是一个底层图形可视软件，通过命令行和编程接口来生成图表，通过解析DOT语言，自动布局绘制图，而直接写DOT语言会比较困难，所以有人将DOT接口进行优化封装，即pydot，我们通过执行python脚本，自动生成.dot，又由Graphviz将.dot解析成.svg等图片格式  
+
+所以我们只需要专注于pydot，pydot中有三个主要的类node、Subgraph、Graph  
+1、node是pydot最基本的元素，表示一个独立的实体，其中不能包含其他的节点，需要加入到Graph/SubGraph中，否则不会显示在最终的图中  
+2、Subgraph子图是一组节点的集合，其本身不是节点，可以包含多个 Node，并且可以用边连接节点  
+3、Graph是整个图，是最终的可视化对象。是最高级的容器，可以包含：节点、子图、边，只有Graph、DiGraph对象可以被write_png()  write_svg()输出为最终图像  
+
+那么在pydot中就是创建这些类，然后将node、Subgraph、Graph连接起来就构成了图，然后根据不同的需求，用不同的布局引擎来使用不同的图形排版，如下所示  
+`dot -Tpng example.dot -o example_dot.png`  
+`fdp -Tpng example.dot -o example_fdp.png`  
+![](./images/4.png)  
+
+从理解层面，排除掉边，就可以把Graph理解为根，Subgraph理解为非叶子节点，node就是叶子节点  
 
 ```python
 # Dot就是主图，Edge用于连线，Node就是节点，Subgraph就是子图
@@ -164,5 +169,5 @@ class AIADot(Dot):
     self.legend.add_edge_legend(MessageEdge, "message")
 
 ```
-此时python main.py即可生成.dot，然后用前面说的布局引擎即可生成图片，上例生成的图片如下图所示
-![](./images/5.png)
+此时python main.py即可生成.dot，然后用前面说的布局引擎即可生成图片，上例生成的图片如下图所示  
+![](./images/5.png)  

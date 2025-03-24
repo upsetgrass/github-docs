@@ -1,6 +1,6 @@
 # github_action
 
-workflows中的yml是自动构建工具，和makefile mill等工具类似，只不过worflows是github中action组件自动执行的，这一部分用于创建分支gh-pages，单独存储mdbook build构建出来的那些html还有一些依赖文件，以保持其他分支的洁净，并设定自动更新文档的条件，具体示例如下，基本可以直接使用
+workflows中的yml是自动构建工具，和makefile mill等工具类似，只不过worflows是github中action组件自动执行的，这一部分用于创建分支gh-pages，单独存储mdbook build构建出来的那些html还有一些依赖文件，以保持其他分支的洁净，并设定自动更新文档的条件，具体示例如下，基本可以直接使用  
 
 ```yaml
 name: deploy-github-pages  # 定义workflow或步骤名称
@@ -41,4 +41,4 @@ jobs:
           publish_dir: ./book               # 指令主分支的./book内容作为gh-pages分支的内容
           force_orphan: true                   # 删除gh-pages的历史记录  ，只保留最新版本
 ```
-本质：workflows中的操作就是github帮我们在某种触发下，自动执行某些指令。比如上面就是push到主分支时，执行后面的操作，后面的操作就是github把我们的主分支的代码pull下来，然后下载mdbook执行mdbook build，然后创建gh-pages分支，将生成的/book推送到我的仓库的gh-pages分支上。
+本质：workflows中的操作就是github帮我们在某种触发下，自动执行某些指令。比如上面就是push到主分支时，执行后面的操作，后面的操作就是github把我们的主分支的代码pull下来，然后下载mdbook执行mdbook build，然后创建gh-pages分支，将生成的/book推送到我的仓库的gh-pages分支上。  
