@@ -6,7 +6,7 @@ src = "docs"
 title = "github_docs_example"
 
 [output.html]
-git-repository-url = "https://upsetgrass.github.io/github-docs/"
+git-repository-url = "https://github/upsetgrass/github-docs/"
 mathjax-support = true
 
 [output.pdf]
