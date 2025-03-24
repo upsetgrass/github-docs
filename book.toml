@@ -1,0 +1,13 @@
+[book]
+authors = ["upsetgrass"]
+language = "en"
+multilingual = false
+src = "docs"
+title = "github_docs_example"
+
+[output.html]
+git-repository-url = "https://upsetgrass.github.io/github-docs/"
+mathjax-support = true
+
+[output.pdf]
+optional = true
