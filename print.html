@@ -1,0 +1,516 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>github_docs_example</title>
+        
+        <meta name="robots" content="noindex" />
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="favicon.png">
+        
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        
+        <link rel="stylesheet" href="css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> github docs结构</a></li><li class="chapter-item expanded "><a href="book-toml.html"><strong aria-hidden="true">2.</strong> book.toml</a></li><li class="chapter-item expanded "><a href="src.html"><strong aria-hidden="true">3.</strong> src源文件</a></li><li class="chapter-item expanded "><a href="mdbook.html"><strong aria-hidden="true">4.</strong> mdbook指令</a></li><li class="chapter-item expanded "><a href="action.html"><strong aria-hidden="true">5.</strong> github_action</a></li><li class="chapter-item expanded "><a href="git.html"><strong aria-hidden="true">6.</strong> github操作</a></li><li class="chapter-item expanded "><a href="pic.html"><strong aria-hidden="true">7.</strong> 插图</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">github_docs_example</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                        <a href="https://github/upsetgrass/github-docs/" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#项目文档结构" id="项目文档结构">项目文档结构</a></h1>
+<pre><code>├──.github/workflows/dbook.yml
+├── book.toml
+├── src/
+│   ├── SUMMARY.md  # 目录结构定义
+│   ├── index.md
+│   ├── chapter_1.md
+│   ├── chapter_2.md
+│   ├── images/
+│   │   ├── example.png
+│   ├── theme/
+│   │   ├── custom.css
+├── book/
+</code></pre>
+<p>简要说明：</p>
+<p>1、book.toml中是用于设置文档/书籍、输出形式的相关设置</p>
+<p>2、src子目录下存放源文件，包括源文档（.md），静态资源（images目录下）、模板文件（theme目录下），其中必须有一个SUMMARY.md文档，用于存储文档的目录结构，必须有一个index.md，用于指定进入页</p>
+<p>3、.github/workflows/dbook.yml用于github进行action自动化进程，用于检查、解决打开生成的html文档时的一些问题</p>
+<p>4、book是文档生成的一些结果信息</p>
+<p>5、整个项目利用mdbook进行，mdbook的下载需要Rust编译环境，流程如下<br />
+<code>curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh</code><br />
+这一步时会询问下载方式一般选择-立即安装Rust、Cargo-直接点Enter<br />
+此时rust会安装到~/.cargo/bin/ 此时还需要手动加入到PATH<br />
+<code>export PATH=&quot;$HOME/.cargo/bin:$PATH&quot; &gt;&gt; ~/.bashrc </code><br />
+<code>source ~/.bashrc</code><br />
+此时就可以用cargo工具安装mdbook，需要注意，cargo指令是用户级管理，不要用sudo<br />
+<code>cargo install mdbook</code><br />
+<code>cargo install mdbook-pdf</code>  </p>
+<h1><a class="header" href="#booktoml" id="booktoml">book.toml</a></h1>
+<pre><code class="language-toml">[book]
+authors = [&quot;upsetgrass&quot;]
+language = &quot;zh&quot;
+multilingual = false
+src = &quot;docs/&quot;
+title = &quot;note_test&quot;
+
+[output.html]
+git-repository-url = &quot;https://upsetgrass.github.io/note/&quot;
+mathjax-support = true
+
+[output.pdf]
+optional = true
+</code></pre>
+<p>这是一个示例，有三个部分book、output.html、output.pdf</p>
+<p>[book] - 用于设置书籍，作者是upsetgrass，该文档的语言是中文，不支持多语言，src源文件目录，所有的markdown章节都放在docs目录下，书籍的标题是note_test，显示在index.html页面的 &lt;\title&gt; 标签中</p>
+<p>[output.html] - 配置 mdBook 生成 HTML 格式文档的参数，git-repository-url，会在生成的 HTML 文档的右上角添加一个指向该 Git 仓库的链接，mathjax-support用于是否启用MathJax公式支持，Makrdown中使用LateX数学公式</p>
+<p>对于每一个md生成的html会生成在本地的book路径下</p>
+<p><img src="./images/1.png" alt="" /></p>
+<p>[output.pdf] - 控制pdf的输出行为，如果 pdf 生成器（mdbook-pdf）不可用，跳过 pdf 生成，而不会报错，mdbook-pdf生成的pdf会放在book/output路径下</p>
+<h1><a class="header" href="#src源文件" id="src源文件">src源文件</a></h1>
+<p>SUMMARY.md是书籍的目录</p>
+<pre><code class="language-markdown"># Summary
+
+# ChiselAIA
+
+* [😺AIA](./index.md)
+* [📩IMSIC](./imsic.md)
+* [🧶APLIC](./aplic.md)
+* [🧭集成指南（Integration Guide）](./integration.md)
+</code></pre>
+<p>mdbook会分析SUMMARY.md中指向的.md，只有加在了SUMMARY.md中的章节，才会生成对应的html最终在书籍中才能看到对应的章节，下图框出部分就是SUMMARY.md的内容展示，右侧就是index.md的内容，index.md会作为进入页（初始页）<br />
+<img src="./images/2.png" alt="" /><br />
+对于.md中需要使用到的图片，需要存放到src/images下，并在.md中以![](./images/XXX.svg)的形式引用进来<br />
+ps：[]() - 超链接，![]() - 图片插入</p>
+<h1><a class="header" href="#mdbook指令" id="mdbook指令">mdbook指令</a></h1>
+<p><code>mdbook init</code>：对mdbook所需要的book.toml  book/ .gitignore src/ SUMMARY.md进行简单设置，也可以自行mkdir touch</p>
+<p><code>mdbook build</code>：读取book.toml配置文件，解析 src/SUMMARY.md 生成目录结构；将 src/ 目录中的 .md 文件转换为 HTML（默认存放在 book/）；复制 theme/、static/ 目录的内容到 book/。</p>
+<p><code>mdbook serve -p 3000</code>：运行一个本地的http服务器，默认为http://127.0.0.1:3000，-p可以指定为3000还是4000...，用于本地展示生成的书籍  </p>
+<h1><a class="header" href="#github_action" id="github_action">github_action</a></h1>
+<p>workflows中的yml是自动构建工具，和makefile mill等工具类似，只不过worflows是github中action组件自动执行的，这一部分用于创建分支gh-pages，单独存储mdbook build构建出来的那些html还有一些依赖文件，以保持其他分支的洁净，并设定自动更新文档的条件，具体示例如下，基本可以直接使用</p>
+<pre><code class="language-yaml">name: deploy-github-pages  # 定义workflow或步骤名称
+on:                        # on:触发条件
+  push:
+    branches:
+      - main               # 当main分支有新的push，触发该github action
+jobs:
+  deploy-github-pages:     # 使用最新的Ubuntu作为执行环境
+    runs-on: ubuntu-latest # 运行环境
+    permissions:           # 设置权限，使得action可以向gh-pages分支写入
+      contents: write
+    steps:                 # 以下都是各个任务
+      - name: Checkout repository         # 步骤名称
+        uses: actions/checkout@v4  # uses-使用github action中写好的脚本，这里是在拉取我的代码
+
+      - name: Setup mdBook
+        if: ${{ github.ref == 'refs/heads/main' }}
+        uses: peaceiris/actions-mdbook@v1.2.0       # 主分支上安装mdbook
+        with:
+          mdbook-version: '0.4.5'
+
+      - name: Build site
+        if: ${{ github.ref == 'refs/heads/main' }}
+        working-directory: .
+        run: mdbook build                           # 主分支上运行mdbook build指令
+
+      - name: Move HTML files to root 
+        run: |                                      # run: | 运行多行shell脚本
+          mv ./book/html/* ./book/
+          rm -r ./book/html
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3  # 使用该actions用于自动部署github pages
+        if: ${{ github.ref == 'refs/heads/main' }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./book               # 指令主分支的./book内容作为gh-pages分支的内容
+          force_orphan: true                   # 删除gh-pages的历史记录  ，只保留最新版本
+</code></pre>
+<p>本质：workflows中的操作就是github帮我们在某种触发下，自动执行某些指令。比如上面就是push到主分支时，执行后面的操作，后面的操作就是github把我们的主分支的代码pull下来，然后下载mdbook执行mdbook build，然后创建gh-pages分支，将生成的/book推送到我的仓库的gh-pages分支上。  </p>
+<h1><a class="header" href="#github操作" id="github操作">github操作</a></h1>
+<p>需要在github仓库的settings里面的Pages项去修改这些内容</p>
+<p><img src="./images/3.png" alt="" /></p>
+<p>这里your site is live at https://upsetgrass.github.io/note/ 就是github给我们的文档分配的地址</p>
+<p>格式为：https://&lt;用户名/组织名&gt;.github.io/&lt;仓库名&gt;</p>
+<p>我们在Readme.md中就可以以  [文档](https://upsetgrass.github.io/note/)    这种形式超链接到我们写的书籍</p>
+<p>下面Branch中设置gh-pages/root的前提是需要先把.github/workflows/mdbook.yml git到该仓库，此时github就会自动出现gh-pages分支，用于处理Github Pages，也就是会把这个分支作为书籍的源文件</p>
+<p>这里需要注意的是，我们之前在.github/workflows/mdbook的生成/book的操作是在主分支，但是生成的结果放在了gh-pages分支，所以是以gh-pages分支作为源文件  </p>
+<h1><a class="header" href="#插图" id="插图">插图</a></h1>
+<p>有多种方式生成我们所需要的图，1、graphviz 2、drawio</p>
+<p>第一种方式是以代码的形式存储，第二种方式是以图形化、交互式的方式进行，.drawio-&gt;.svg</p>
+<p>简要针对第一种方式进行讲解<br />
+Graphviz是一个底层图形可视软件，通过命令行和编程接口来生成图表，通过解析DOT语言，自动布局绘制图，而直接写DOT语言会比较困难，所以有人将DOT接口进行优化封装，即pydot，我们通过执行python脚本，自动生成.dot，又由Graphviz将.dot解析成.svg等图片格式</p>
+<p>所以我们只需要专注于pydot，pydot中有三个主要的类node、Subgraph、Graph<br />
+1、node是pydot最基本的元素，表示一个独立的实体，其中不能包含其他的节点，需要加入到Graph/SubGraph中，否则不会显示在最终的图中<br />
+2、Subgraph子图是一组节点的集合，其本身不是节点，可以包含多个 Node，并且可以用边连接节点<br />
+3、Graph是整个图，是最终的可视化对象。是最高级的容器，可以包含：节点、子图、边，只有Graph、DiGraph对象可以被write_png()  write_svg()输出为最终图像</p>
+<p>那么在pydot中就是创建这些类，然后将node、Subgraph、Graph连接起来就构成了图，然后根据不同的需求，用不同的布局引擎来使用不同的图形排版，如下所示<br />
+<code>dot -Tpng example.dot -o example_dot.png</code><br />
+<code>fdp -Tpng example.dot -o example_fdp.png</code><br />
+<img src="./images/4.png" alt="" /></p>
+<p>从理解层面，排除掉边，就可以把Graph理解为根，Subgraph理解为非叶子节点，node就是叶子节点</p>
+<pre><code class="language-python"># Dot就是主图，Edge用于连线，Node就是节点，Subgraph就是子图
+from pydot import Dot, Edge, Node, Subgraph
+
+# 创建一个空的有向图
+graph = pydot.Dot(graph_type=&quot;digraph&quot;)
+
+# 创建节点，节点在DOT语言中的唯一ID为msi_device_0，其中文字显示为MSI Device0
+msi = Node(&quot;msi_device_0&quot;, label=&quot;MSI Device0&quot;)
+
+# 创建一个子图
+subgraph = pydot.Subgraph(&quot;cluster_1&quot;)
+</code></pre>
+<pre><code class="language-python"># main.py
+from arch_common import *
+
+###############################################################################
+# Graph
+###############################################################################
+graph = AIADot(label=&quot;Configuration Paths in an AIA System&quot;, rankdir=&quot;RL&quot;)
+configure = graph.main
+
+###############################################################################
+# Nodes and Subgraphs
+###############################################################################
+configure.add_subgraph(aplic)
+configure.add_node(bus_network)
+for imsic_hart in imsic_harts:
+  configure.add_subgraph(imsic_hart)
+
+###############################################################################
+# Edges
+###############################################################################
+for domain in aplic.domains:
+  configure.add_edge(MessageEdge(bus_network, domain))
+for imsic_hart in imsic_harts:
+  imsic = imsic_hart.imsic
+  hart = imsic_hart.hart
+  for intFile in imsic.intFiles:
+    configure.add_edge(WireEdge(hart, intFile))
+    configure.add_edge(Edge(intFile, bus_network, color=&quot;transparent&quot;))
+  configure.add_edge(MessageEdge(hart, bus_network))
+
+###############################################################################
+# Output
+###############################################################################
+graph.write(__file__.replace(&quot;_dot.py&quot;, &quot;_py.dot&quot;))
+</code></pre>
+<pre><code class="language-python"># arch_common.py
+from pydot import Dot, Edge, Node, Subgraph
+
+###############################################################################
+# Nodes and Subgraphs
+###############################################################################
+msi_devices = [
+  Node(&quot;msi_device_0&quot;, label=&quot;MSI Device 0&quot;),
+  Node(&quot;msi_device_1&quot;, label=&quot;MSI Device 1&quot;),
+  Node(&quot;msi_device__&quot;, label=&quot;MSI Device ...&quot;),
+]
+
+class APLIC(Subgraph):
+  def __init__(self):
+    Subgraph.__init__(self, &quot;aplic&quot;, label=&quot;APLIC&quot;, cluster=True,
+      style='filled', bgcolor=&quot;#F8CECC&quot;, pencolor=&quot;#B85450&quot;,
+    )
+    self.domains = [
+      Node(&quot;m_domain&quot;, label=&quot;M Domain&quot;, height=1.5),
+      Node(&quot;s_domain&quot;, label=&quot;S Domain&quot;, height=1.5),
+    ]
+    for domain in self.domains:
+      self.add_node(domain)
+aplic = APLIC()
+
+wired_devices = [
+  Node(&quot;wired_device_0&quot;, label=&quot;Wired Device 0&quot;),
+  Node(&quot;wired_device_1&quot;, label=&quot;Wired Device 1&quot;),
+  Node(&quot;wired_device__&quot;, label=&quot;Wired Device ...&quot;),
+]
+
+bus_network = Node(&quot;bus_network&quot;, label=&quot;Bus&quot;, height=7)
+
+class IMSICHart(Subgraph):
+  def __init__(self, id, suffix):
+    Subgraph.__init__(self, f&quot;imsic_hart_{suffix}&quot;, label=&quot;&quot;, cluster=True,
+      pencolor=&quot;transparent&quot;,
+    )
+    self.imsic = self.IMSIC(id, suffix)
+    self.add_subgraph(self.imsic)
+    self.hart = Node(f&quot;hart_{suffix}&quot;, label=f&quot;Hart {id}&quot;, height=3.2)
+    self.add_node(self.hart)
+    
+  class IMSIC(Subgraph):
+    def __init__(self, id, suffix):
+      Subgraph.__init__(self, f&quot;imsic_{suffix}&quot;, label=f&quot;IMSIC {id}&quot;, cluster=True,
+        style=&quot;filled&quot;, bgcolor=&quot;#F8CECC&quot;, pencolor=&quot;#B85450&quot;,
+      )
+      self.intFiles = [
+        Node(f&quot;imsic_{suffix}_mint_file&quot;, label=&quot;M IntFile&quot;),
+        Node(f&quot;imsic_{suffix}_sint_file&quot;, label=&quot;S IntFile&quot;),
+      ]
+      self.intFiles += [
+        Node(f&quot;imsic_{suffix}_vsint_file_0&quot;, label=f&quot;VS IntFile 0&quot;),
+        Node(f&quot;imsic_{suffix}_vsint_file__&quot;, label=f&quot;VS IntFile ...&quot;),
+      ]
+      for intFile in self.intFiles:
+        self.add_node(intFile)
+
+imsic_harts = [IMSICHart(0, 0), IMSICHart(&quot;...&quot;, &quot;_&quot;)]
+
+###############################################################################
+# Edges
+###############################################################################
+class MessageEdge(Edge):
+  def __init__(self, src, dst, obj_dict=None, **attrs):
+    Edge.__init__(self, src, dst, obj_dict, **attrs, color='&quot;black:invis:black&quot;')
+class WireEdge(Edge):
+  def __init__(self, src, dst, obj_dict=None, **attrs):
+    Edge.__init__(self, src, dst, obj_dict, **attrs)
+
+###############################################################################
+# Graph
+###############################################################################
+class AIADot(Dot):
+  class Legend(Subgraph):
+    def __init__(self):
+      Subgraph.__init__(self, &quot;legend&quot;, label=&quot;Legend&quot;, cluster=True, pencolor=&quot;gray&quot;)
+    def add_edge_legend(self, EdgeClass, label):
+      src = Node(f&quot;legend_${label}_edge_src&quot;, shape=&quot;plain&quot;, label=label)
+      self.add_node(src)
+      dst = Node(f&quot;legend_${label}_edge_dst&quot;, shape=&quot;plain&quot;, label=&quot; &quot;)
+      self.add_node(dst)
+      self.add_edge(EdgeClass(src, dst))
+
+  def __init__(self, *argsl, **argsd):
+    Dot.__init__(self, *argsl, **argsd,
+      splines=&quot;ortho&quot;,
+      bgcolor=&quot;transparent&quot;,
+    )
+    self.main = Subgraph(&quot;main&quot;, label=&quot;&quot;, cluster=True, pencolor=&quot;transparent&quot;)
+    self.main.set_node_defaults(shape=&quot;box&quot;)
+    self.add_subgraph(self.main)
+    self.legend = self.Legend()
+    self.add_subgraph(self.legend)
+    self.legend.add_edge_legend(WireEdge, &quot;wire&quot;)
+    self.legend.add_edge_legend(MessageEdge, &quot;message&quot;)
+
+</code></pre>
+<p>此时python main.py即可生成.dot，然后用前面说的布局引擎即可生成图片，上例生成的图片如下图所示<br />
+<img src="./images/5.png" alt="" />  </p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+        
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            MathJax.Hub.Register.StartupHook('End', function() {
+                window.setTimeout(window.print, 100);
+            });
+        });
+        </script>
+        
+        
+
+    </body>
+</html>
